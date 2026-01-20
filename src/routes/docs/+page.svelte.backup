@@ -1,0 +1,309 @@
+<script lang="ts">
+	import { goto } from '$app/navigation';
+	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
+</script>
+
+<svelte:head>
+	<title>Documentation - CSV Column Mapper</title>
+	<meta name="description" content="Learn how to use CSV Column Mapper effectively" />
+</svelte:head>
+
+<div class="page-container">
+	<header class="page-header">
+		<nav class="nav">
+			<div class="nav-container">
+				<div class="logo">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+						<polyline points="14 2 14 8 20 8"></polyline>
+						<line x1="16" y1="13" x2="8" y2="13"></line>
+						<line x1="16" y1="17" x2="8" y2="17"></line>
+						<polyline points="10 9 9 9 8 9"></polyline>
+					</svg>
+					<span>CSV Mapper</span>
+				</div>
+				<div class="nav-links">
+					<a href="/" class="nav-link">Back to Home</a>
+					<ThemeToggle />
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<main class="main-content">
+		<div class="content-container docs-container">
+			<!-- Hero Section -->
+			<section class="hero-section">
+				<h1 class="page-title">Documentation</h1>
+				<p class="page-subtitle">
+					Everything you need to get started with CSV Column Mapper
+				</p>
+			</section>
+
+			<!-- Main Grid -->
+			<div class="docs-grid">
+			<!-- Sidebar Navigation -->
+			<aside class="sidebar">
+				<nav class="sidebar-nav">
+					<h3 class="sidebar-title">Quick Links</h3>
+					<ul class="sidebar-links">
+						<li><a href="#getting-started" class="sidebar-link">Getting Started</a></li>
+						<li><a href="#creating-mappings" class="sidebar-link">Creating Mappings</a></li>
+						<li><a href="#transformations" class="sidebar-link">Transformations</a></li>
+						<li><a href="#validation" class="sidebar-link">Data Validation</a></li>
+						<li><a href="#exporting" class="sidebar-link">Exporting Data</a></li>
+						<li><a href="#troubleshooting" class="sidebar-link">Troubleshooting</a></li>
+					</ul>
+				</nav>
+			</aside>
+
+			<!-- Content -->
+			<div class="docs-content">
+				<!-- Getting Started -->
+				<section id="getting-started" class="card">
+					<h2 class="section-title">🚀 Getting Started</h2>
+					<p class="section-text">
+						Welcome to CSV Column Mapper! This guide will help you transform your CSV files
+						in minutes.
+					</p>
+
+					<h3 class="subsection-title">Step 1: Upload Your File</h3>
+					<p class="section-text">
+						Drag and drop your CSV file or click to browse. We support files up to your plan's
+						size limit (Free: 5MB, Pro: 50MB, Business: 250MB, Enterprise: 2GB).
+					</p>
+
+					<h3 class="subsection-title">Step 2: Preview Your Data</h3>
+					<p class="section-text">
+						Review the first 100 rows of your data. Check that columns are correctly detected and
+						data looks as expected.
+					</p>
+
+					<h3 class="subsection-title">Step 3: Create Your Mapping</h3>
+					<p class="section-text">
+						Drag source columns to target columns to create your mapping. Add transformations
+						and validation rules as needed.
+					</p>
+				</section>
+
+				<!-- Creating Mappings -->
+				<section id="creating-mappings" class="card">
+					<h2 class="section-title">📋 Creating Mappings</h2>
+					<h3 class="subsection-title">Drag and Drop Interface</h3>
+					<p class="section-text">
+						The easiest way to map columns is our drag-and-drop interface:
+					</p>
+					<ol class="styled-list">
+						<li>Drag a column from the Source panel on the left</li>
+						<li>Drop it onto a target column in the Target panel on the right</li>
+						<li>The mapping is automatically created</li>
+						<li>To remove a mapping, click the X button on the target column</li>
+					</ol>
+
+					<h3 class="subsection-title">Using Templates</h3>
+					<p class="section-text">
+						For common file formats, use our pre-built templates:
+					</p>
+					<ul class="styled-list">
+						<li>Click "Browse Templates" on the mapping screen</li>
+						<li>Search for your file type (e.g., "Shopify export")</li>
+						<li>Click to apply the template automatically</li>
+					</ul>
+
+					<h3 class="subsection-title">Saving Your Mappings</h3>
+					<p class="section-text">
+						Paid users can save mappings for future use. Click "Save Mapping" and give it a
+						descriptive name. Your saved mappings appear on the dashboard for one-click reuse.
+					</p>
+				</section>
+
+				<!-- Transformations -->
+				<section id="transformations" class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-gray-700">
+					<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">🔧 Transformations</h2>
+					<div class="prose prose-blue dark:prose-invert max-w-none">
+						<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+							Transformations allow you to modify data during the mapping process:
+						</p>
+
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+							<div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+								<h4 class="font-semibold text-gray-900 dark:text-white mb-2">Text Transformations</h4>
+								<ul class="text-sm text-gray-700 dark:text-gray-300 space-y-1">
+									<li>• Trim whitespace</li>
+									<li>• Convert case (UPPER, lower, Title)</li>
+									<li>• Find and replace</li>
+									<li>• Remove special characters</li>
+								</ul>
+							</div>
+
+							<div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+								<h4 class="font-semibold text-gray-900 dark:text-white mb-2">Date Transformations</h4>
+								<ul class="text-sm text-gray-700 dark:text-gray-300 space-y-1">
+									<li>• Parse dates (auto-detect format)</li>
+									<li>• Convert date formats</li>
+									<li>• Extract date components</li>
+									<li>• Date arithmetic</li>
+								</ul>
+							</div>
+
+							<div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+								<h4 class="font-semibold text-gray-900 dark:text-white mb-2">Number Transformations</h4>
+								<ul class="text-sm text-gray-700 dark:text-gray-300 space-y-1">
+									<li>• Round decimals</li>
+									<li>• Format as currency</li>
+									<li>• Convert units</li>
+									<li>• Mathematical operations</li>
+								</ul>
+							</div>
+
+							<div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+								<h4 class="font-semibold text-gray-900 dark:text-white mb-2">Advanced</h4>
+								<ul class="text-sm text-gray-700 dark:text-gray-300 space-y-1">
+									<li>• Custom formulas (Pro+)</li>
+									<li>• Conditional logic (Business+)</li>
+									<li>• Lookup tables (Business+)</li>
+									<li>• Regular expressions (Enterprise)</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Validation -->
+				<section id="validation" class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-gray-700">
+					<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+						✅ Data Validation
+					</h2>
+					<div class="prose prose-blue dark:prose-invert max-w-none">
+						<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+							Ensure data quality with validation rules:
+						</p>
+
+						<div class="space-y-4">
+							<div class="border-l-4 border-blue-500 pl-4">
+								<h4 class="font-semibold text-gray-900 dark:text-white">Required Fields</h4>
+								<p class="text-sm text-gray-700 dark:text-gray-300">
+									Mark columns as required to flag empty values
+								</p>
+							</div>
+
+							<div class="border-l-4 border-green-500 pl-4">
+								<h4 class="font-semibold text-gray-900 dark:text-white">Type Validation</h4>
+								<p class="text-sm text-gray-700 dark:text-gray-300">
+									Ensure values match expected data types (email, URL, number, date)
+								</p>
+							</div>
+
+							<div class="border-l-4 border-yellow-500 pl-4">
+								<h4 class="font-semibold text-gray-900 dark:text-white">Range Validation</h4>
+								<p class="text-sm text-gray-700 dark:text-gray-300">
+									Set min/max values for numeric data
+								</p>
+							</div>
+
+							<div class="border-l-4 border-purple-500 pl-4">
+								<h4 class="font-semibold text-gray-900 dark:text-white">Pattern Validation</h4>
+								<p class="text-sm text-gray-700 dark:text-gray-300">
+									Use regex patterns for custom validation rules
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Exporting -->
+				<section id="exporting" class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-gray-700">
+					<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">📥 Exporting Data</h2>
+					<div class="prose prose-blue dark:prose-invert max-w-none">
+						<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+							Export Formats
+						</h3>
+						<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+							After creating your mapping, export data in multiple formats:
+						</p>
+						<ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 ml-4">
+							<li><strong>CSV:</strong> Standard comma-separated values</li>
+							<li><strong>Excel (XLSX):</strong> Native Excel format with formatting</li>
+							<li><strong>JSON:</strong> Structured JSON for developers</li>
+							<li><strong>XML:</strong> XML format for legacy systems</li>
+						</ul>
+
+						<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3 mt-6">
+							Partial Exports
+						</h3>
+						<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+							Use row filters to export only specific data. This is useful for large files when
+							you only need a subset.
+						</p>
+					</div>
+				</section>
+
+				<!-- Troubleshooting -->
+				<section id="troubleshooting" class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-8 border border-gray-200 dark:border-gray-700">
+					<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+						🔍 Troubleshooting
+					</h2>
+					<div class="prose prose-blue dark:prose-invert max-w-none">
+						<div class="space-y-6">
+							<div>
+								<h4 class="font-semibold text-gray-900 dark:text-white mb-2">
+									My file won't upload
+								</h4>
+								<p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
+									<strong>Solution:</strong> Check that your file is under your plan's size limit.
+									Ensure it's a valid CSV file (UTF-8 encoding works best).
+								</p>
+							</div>
+
+							<div>
+								<h4 class="font-semibold text-gray-900 dark:text-white mb-2">
+									Columns aren't detected correctly
+								</h4>
+								<p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
+									<strong>Solution:</strong> Make sure your CSV has a header row. If using custom
+									delimiters, specify them in the upload options.
+								</p>
+							</div>
+
+							<div>
+								<h4 class="font-semibold text-gray-900 dark:text-white mb-2">
+									Date transformations aren't working
+								</h4>
+								<p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
+									<strong>Solution:</strong> Check that your source date format is consistent. Use
+									the "Auto-detect" option or manually specify the format.
+								</p>
+							</div>
+
+							<div>
+								<h4 class="font-semibold text-gray-900 dark:text-white mb-2">
+									"Quota exceeded" error
+								</h4>
+								<p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
+									<strong>Solution:</strong> You've reached your monthly quota. Upgrade your plan
+									or wait for your quota to reset on your billing anniversary.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Still Need Help -->
+				<section class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg p-8 text-white">
+					<h2 class="text-2xl font-bold mb-4">Still Need Help?</h2>
+					<p class="text-blue-100 mb-6">
+						Our support team is here to assist you with any questions or issues.
+					</p>
+					<div class="flex flex-col sm:flex-row gap-4">
+						<a href="/help" class="bg-white text-blue-600 hover:bg-gray-100 font-semibold py-2 px-6 rounded-lg transition">
+							Visit Help Center
+						</a>
+						<a href="mailto:support@csvmapper.com" class="bg-transparent border-2 border-white text-white hover:bg-white/10 font-semibold py-2 px-6 rounded-lg transition">
+							Email Support
+						</a>
+					</div>
+				</section>
+			</div>
+		</div>
+	</main>
+</div>

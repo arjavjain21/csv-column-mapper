@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#0B1220" />
+		%sveltekit.head%
+
+		<!-- FOUC Prevention: Apply theme immediately before page renders -->
+		<script>
+			(function() {
+				try {
+					const THEME_KEY = 'csv-mapper-theme';
+					const stored = localStorage.getItem(THEME_KEY);
+
+					// Determine theme mode
+					let mode = stored || 'system';
+
+					// If system mode, detect system preference
+					let effectiveTheme = mode;
+					if (mode === 'system') {
+						effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+							? 'dark'
+							: 'light';
+					}
+
+					// Apply theme immediately
+					document.documentElement.dataset.theme = effectiveTheme;
+					document.documentElement.classList.toggle('dark', effectiveTheme === 'dark');
+
+					// Update meta theme-color
+					const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+					if (metaThemeColor) {
+						const color = effectiveTheme === 'dark' ? '#0B1220' : '#ffffff';
+						metaThemeColor.setAttribute('content', color);
+					}
+				} catch (e) {
+					// Fallback to dark mode if something goes wrong
+					document.documentElement.dataset.theme = 'dark';
+					document.documentElement.classList.add('dark');
+				}
+			})();
+		</script>
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>

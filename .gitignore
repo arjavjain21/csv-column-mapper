@@ -1,0 +1,43 @@
+node_modules
+
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
+
+# OS
+.DS_Store
+Thumbs.db
+._*
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+!.env.production.example
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pm2.log
+pm2-error.log
+
+# Testing
+coverage
+.nyc_output
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
