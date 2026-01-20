@@ -35,10 +35,12 @@ export function applyTransformation(
 			case 'concatenate':
 				if (transformation.concatenateColumns && transformation.concatenateColumns.length > 0) {
 					const separator = transformation.concatenateSeparator ?? ' ';
-					const values = transformation.concatenateColumns.map((col) => row[col] ?? '').filter(Boolean);
-					return values.join(separator);
+					const values = transformation.concatenateColumns
+						.map((col) => row[col] ?? '')
+						.filter((v) => v && v.trim() !== '');
+					return values.length > 0 ? values.join(separator) : '';
 				}
-				return value;
+				return '';
 
 			case 'regex_replace':
 				if (transformation.regexPattern) {

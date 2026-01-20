@@ -47,7 +47,7 @@ describe('Transformations', () => {
 				concatenateColumns: ['first', 'last'],
 				concatenateSeparator: ' '
 			};
-			const row = { first: 'John', last: 'Doe' };
+			const row = { first: 'John', last: 'Doe', other: 'ignored' };
 			const result = applyTransformation('', transformation, row, mockDataFile);
 			expect(result).toBe('John Doe');
 		});

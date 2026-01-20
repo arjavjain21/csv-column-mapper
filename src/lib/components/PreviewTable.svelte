@@ -26,8 +26,8 @@
 		}
 	}
 
-	// Limit rows
-	const displayRows = rows.slice(0, maxRows);
+	// Limit rows (reactive)
+	const displayRows = $derived(rows.slice(0, maxRows));
 </script>
 
 <div

@@ -1,10 +1,10 @@
-# Secure Deployment Guide for mapcsv.com
+# Secure Deployment Guide for csvmap.com
 
-This guide covers deploying CSV Column Mapper securely with SSL on mapcsv.com.
+This guide covers deploying CSV Column Mapper securely with SSL on csvmap.com.
 
 ## Prerequisites
 
-- Domain: `mapcsv.com` (or subdomain like `app.mapcsv.com`)
+- Domain: `csvmap.com` (or subdomain like `app.csvmap.com`)
 - Server: VPS (recommended: DigitalOcean, AWS EC2, OVH Cloud) or Vercel
 - SSL Certificate: Let's Encrypt (free) or commercial certificate
 - DNS access for domain configuration
@@ -17,7 +17,7 @@ This guide covers deploying CSV Column Mapper securely with SSL on mapcsv.com.
 
 1. **Add Domain to Vercel**
    - Go to Vercel Dashboard → Your Project → Settings → Domains
-   - Add `mapcsv.com` and `www.mapcsv.com`
+   - Add `csvmap.com` and `www.csvmap.com`
    - Follow DNS configuration instructions
 
 2. **Configure DNS Records**
@@ -34,7 +34,7 @@ This guide covers deploying CSV Column Mapper securely with SSL on mapcsv.com.
 3. **SSL Certificate**
    - Vercel automatically provisions SSL via Let's Encrypt
    - Wait 24-48 hours for DNS propagation and SSL activation
-   - Verify SSL at: https://www.ssllabs.com/ssltest/analyze.html?d=mapcsv.com
+   - Verify SSL at: https://www.ssllabs.com/ssltest/analyze.html?d=csvmap.com
 
 ### Step 2: Environment Variables
 
@@ -59,10 +59,10 @@ STRIPE_PRICE_LIFETIME=price_your-lifetime-id
 
 # Email Configuration (Resend)
 RESEND_API_KEY=re_your-resend-api-key
-EMAIL_FROM=noreply@mapcsv.com
+EMAIL_FROM=noreply@csvmap.com
 
 # App Configuration
-PUBLIC_APP_URL=https://mapcsv.com
+PUBLIC_APP_URL=https://csvmap.com
 ```
 
 ### Step 3: Database Migration
@@ -108,7 +108,7 @@ PUBLIC_APP_URL=https://mapcsv.com
 
 3. **Configure Webhook**
    - Go to Stripe Dashboard → Developers → Webhooks
-   - Add endpoint: `https://mapcsv.com/api/stripe/webhook`
+   - Add endpoint: `https://csvmap.com/api/stripe/webhook`
    - Select events:
      - `checkout.session.completed`
      - `customer.subscription.updated`
@@ -120,7 +120,7 @@ PUBLIC_APP_URL=https://mapcsv.com
 
 1. **Create Resend Account**
    - Sign up at https://resend.com
-   - Verify domain: `mapcsv.com`
+   - Verify domain: `csvmap.com`
    - Add DNS records (SPF, DKIM, DMARC) as instructed
 
 2. **Get API Key**
@@ -128,7 +128,7 @@ PUBLIC_APP_URL=https://mapcsv.com
    - Add to Vercel as `RESEND_API_KEY`
 
 3. **Configure From Address**
-   - Set `EMAIL_FROM=noreply@mapcsv.com` in Vercel
+   - Set `EMAIL_FROM=noreply@csvmap.com` in Vercel
 
 ### Step 6: Deploy
 
@@ -145,7 +145,7 @@ PUBLIC_APP_URL=https://mapcsv.com
    ```
 
 3. **Verify Deployment**
-   - Visit https://mapcsv.com
+   - Visit https://csvmap.com
    - Check SSL certificate (should show valid)
    - Test authentication flow
    - Test CSV mapping
@@ -191,7 +191,7 @@ sudo apt install -y certbot python3-certbot-nginx
 
 2. **Verify DNS Propagation**
    ```bash
-   dig mapcsv.com
+   dig csvmap.com
    # Should return your server IP
    ```
 
@@ -199,7 +199,7 @@ sudo apt install -y certbot python3-certbot-nginx
 
 ```bash
 # Obtain SSL certificate
-sudo certbot --nginx -d mapcsv.com -d www.mapcsv.com
+sudo certbot --nginx -d csvmap.com -d www.csvmap.com
 
 # Certbot will:
 # 1. Verify domain ownership
@@ -213,22 +213,22 @@ sudo certbot renew --dry-run
 
 ### Step 4: Nginx Configuration
 
-Create `/etc/nginx/sites-available/mapcsv.com`:
+Create `/etc/nginx/sites-available/csvmap.com`:
 
 ```nginx
 server {
     listen 80;
-    server_name mapcsv.com www.mapcsv.com;
+    server_name csvmap.com www.csvmap.com;
     return 301 https://$server_name$request_uri;
 }
 
 server {
     listen 443 ssl http2;
-    server_name mapcsv.com www.mapcsv.com;
+    server_name csvmap.com www.csvmap.com;
 
     # SSL Configuration
-    ssl_certificate /etc/letsencrypt/live/mapcsv.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/mapcsv.com/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/csvmap.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/csvmap.com/privkey.pem;
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_ciphers HIGH:!aNULL:!MD5;
     ssl_prefer_server_ciphers on;
@@ -270,7 +270,7 @@ server {
 
 Enable site:
 ```bash
-sudo ln -s /etc/nginx/sites-available/mapcsv.com /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/csvmap.com /etc/nginx/sites-enabled/
 sudo nginx -t  # Test configuration
 sudo systemctl reload nginx
 ```
@@ -322,10 +322,10 @@ STRIPE_PRICE_LIFETIME=price_xxx
 
 # Email
 RESEND_API_KEY=re_xxx
-EMAIL_FROM=noreply@mapcsv.com
+EMAIL_FROM=noreply@csvmap.com
 
 # App
-PUBLIC_APP_URL=https://mapcsv.com
+PUBLIC_APP_URL=https://csvmap.com
 NODE_ENV=production
 PORT=3000
 ```
@@ -381,15 +381,15 @@ Same as Option 1, Steps 4-5.
 ### 1. SSL Test
 ```bash
 # Check SSL certificate
-openssl ssl_client -connect mapcsv.com:443 -showcerts
+openssl ssl_client -connect csvmap.com:443 -showcerts
 
 # Online SSL test
-https://www.ssllabs.com/ssltest/analyze.html?d=mapcsv.com
+https://www.ssllabs.com/ssltest/analyze.html?d=csvmap.com
 # Should get A or A+ rating
 ```
 
 ### 2. Application Tests
-- [ ] Homepage loads: https://mapcsv.com
+- [ ] Homepage loads: https://csvmap.com
 - [ ] SSL certificate shows as valid (green lock)
 - [ ] Authentication works (signup/login)
 - [ ] CSV upload works
@@ -401,17 +401,17 @@ https://www.ssllabs.com/ssltest/analyze.html?d=mapcsv.com
 ### 3. API Tests
 ```bash
 # Test API endpoint
-curl https://mapcsv.com/api/auth/session
+curl https://csvmap.com/api/auth/session
 
 # Test health endpoint (if exists)
-curl https://mapcsv.com/api/health
+curl https://csvmap.com/api/health
 ```
 
 ### 4. Performance Test
 ```bash
 # Lighthouse test
 # Visit: https://pagespeed.web.dev/
-# Enter: https://mapcsv.com
+# Enter: https://csvmap.com
 # Should score 90+ on all metrics
 ```
 
@@ -509,7 +509,7 @@ sudo apt install -y nodejs nginx certbot python3-certbot-nginx
 sudo npm install -g pm2
 
 # SSL setup
-sudo certbot --nginx -d mapcsv.com -d www.mapcsv.com
+sudo certbot --nginx -d csvmap.com -d www.csvmap.com
 
 # Deploy app
 cd /var/www/csv-column-mapper

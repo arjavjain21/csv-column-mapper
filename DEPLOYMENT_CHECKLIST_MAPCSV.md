@@ -1,14 +1,14 @@
-# Deployment Checklist for mapcsv.com
+# Deployment Checklist for csvmap.com
 
 Use this checklist to ensure secure deployment with SSL.
 
 ## Pre-Deployment
 
 ### Domain & DNS
-- [ ] Domain `mapcsv.com` registered
+- [ ] Domain `csvmap.com` registered
 - [ ] DNS A record pointing to server IP (or Vercel)
-- [ ] DNS CNAME for www.mapcsv.com
-- [ ] DNS propagation verified (`dig mapcsv.com`)
+- [ ] DNS CNAME for www.csvmap.com
+- [ ] DNS propagation verified (`dig csvmap.com`)
 
 ### Infrastructure Choice
 - [ ] **Option A: Vercel** (Easiest, auto-SSL)
@@ -22,13 +22,13 @@ Use this checklist to ensure secure deployment with SSL.
 - [ ] Domain added to Vercel project
 - [ ] DNS records configured per Vercel instructions
 - [ ] SSL certificate auto-provisioned (wait 24-48h)
-- [ ] SSL verified: https://www.ssllabs.com/ssltest/analyze.html?d=mapcsv.com
+- [ ] SSL verified: https://www.ssllabs.com/ssltest/analyze.html?d=csvmap.com
 
 ### VPS (Let's Encrypt)
 - [ ] Certbot installed: `sudo apt install certbot python3-certbot-nginx`
-- [ ] SSL certificate obtained: `sudo certbot --nginx -d mapcsv.com -d www.mapcsv.com`
+- [ ] SSL certificate obtained: `sudo certbot --nginx -d csvmap.com -d www.csvmap.com`
 - [ ] Auto-renewal tested: `sudo certbot renew --dry-run`
-- [ ] SSL verified: https://www.ssllabs.com/ssltest/analyze.html?d=mapcsv.com
+- [ ] SSL verified: https://www.ssllabs.com/ssltest/analyze.html?d=csvmap.com
 
 ---
 
@@ -46,8 +46,8 @@ Use this checklist to ensure secure deployment with SSL.
 - [ ] `STRIPE_PRICE_BUSINESS_YEARLY` - Price ID
 - [ ] `STRIPE_PRICE_LIFETIME` - Price ID
 - [ ] `RESEND_API_KEY` - Resend API key
-- [ ] `EMAIL_FROM` - `noreply@mapcsv.com`
-- [ ] `PUBLIC_APP_URL` - `https://mapcsv.com`
+- [ ] `EMAIL_FROM` - `noreply@csvmap.com`
+- [ ] `PUBLIC_APP_URL` - `https://csvmap.com`
 
 ### Security Check
 - [ ] All variables use **production** keys (not test keys)
@@ -94,7 +94,7 @@ Use this checklist to ensure secure deployment with SSL.
 - [ ] Add Price IDs to environment variables
 
 ### Webhook Configuration
-- [ ] Create webhook endpoint: `https://mapcsv.com/api/stripe/webhook`
+- [ ] Create webhook endpoint: `https://csvmap.com/api/stripe/webhook`
 - [ ] Select events:
   - `checkout.session.completed`
   - `customer.subscription.updated`
@@ -109,14 +109,14 @@ Use this checklist to ensure secure deployment with SSL.
 
 ### Domain Verification
 - [ ] Create Resend account
-- [ ] Add domain: `mapcsv.com`
+- [ ] Add domain: `csvmap.com`
 - [ ] Add DNS records (SPF, DKIM, DMARC) as instructed
 - [ ] Verify domain in Resend dashboard
 
 ### API Setup
 - [ ] Generate API key in Resend
 - [ ] Add to environment variables as `RESEND_API_KEY`
-- [ ] Set `EMAIL_FROM=noreply@mapcsv.com`
+- [ ] Set `EMAIL_FROM=noreply@csvmap.com`
 - [ ] Test email sending
 
 ---
@@ -170,7 +170,7 @@ Use this checklist to ensure secure deployment with SSL.
 ## Step 8: Post-Deployment Verification
 
 ### Basic Functionality
-- [ ] Homepage loads: https://mapcsv.com
+- [ ] Homepage loads: https://csvmap.com
 - [ ] SSL certificate valid (green lock icon)
 - [ ] No mixed content warnings
 - [ ] All pages accessible
@@ -236,26 +236,26 @@ Use this checklist to ensure secure deployment with SSL.
 ### SSL Check
 ```bash
 # Check certificate
-openssl ssl_client -connect mapcsv.com:443 -showcerts
+openssl ssl_client -connect csvmap.com:443 -showcerts
 
 # Online test
-# Visit: https://www.ssllabs.com/ssltest/analyze.html?d=mapcsv.com
+# Visit: https://www.ssllabs.com/ssltest/analyze.html?d=csvmap.com
 ```
 
 ### Application Health
 ```bash
 # Test API
-curl https://mapcsv.com/api/auth/session
+curl https://csvmap.com/api/auth/session
 
 # Check response headers
-curl -I https://mapcsv.com
+curl -I https://csvmap.com
 ```
 
 ### Performance Test
 ```bash
 # Lighthouse (online)
 # Visit: https://pagespeed.web.dev/
-# Enter: https://mapcsv.com
+# Enter: https://csvmap.com
 ```
 
 ---

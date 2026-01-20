@@ -123,48 +123,17 @@ async function exportExcel(options: ExportOptions): Promise<{
 
 /**
  * Export as Parquet
- * Note: Requires parquetjs library - install with: npm install parquetjs
+ * Note: Parquet export requires server-side processing
+ * This is a placeholder - implement via API endpoint for production
  */
 async function exportParquet(options: ExportOptions): Promise<{
 	data: Blob;
 	filename: string;
 	mimeType: string;
 }> {
-	try {
-		// Dynamic import to avoid bundling if not used
-		const parquet = await import('parquetjs');
-		
-		const result = generateOutputCSV(options.schemaFile, options.dataFile, options.mappings);
-		const csv = Papa.parse(result.data, { header: true });
-		
-		// Define schema from first row
-		const firstRow = csv.data[0] as Record<string, string>;
-		const schema = new parquet.ParquetSchema(
-			Object.keys(firstRow).reduce((acc, key) => {
-				acc[key] = { type: 'UTF8' };
-				return acc;
-			}, {} as Record<string, any>)
-		);
-		
-		// Create writer
-		const writer = await parquet.ParquetWriter.openFile(schema, 'temp.parquet');
-		
-		// Write rows
-		for (const row of csv.data as Record<string, string>[]) {
-			await writer.appendRow(row);
-		}
-		
-		await writer.close();
-		
-		// Read file as blob (in browser, we'd need to use a different approach)
-		// For now, throw error suggesting server-side export
-		throw new Error('Parquet export is best done server-side. Use /api/export endpoint.');
-	} catch (error) {
-		if (error instanceof Error && error.message.includes('Parquet export')) {
-			throw error;
-		}
-		throw new Error('Parquet export requires parquetjs library. Install with: npm install parquetjs');
-	}
+	// Parquet export requires server-side processing
+	// For now, throw informative error
+	throw new Error('Parquet export requires server-side processing. Please use the /api/export endpoint or export as CSV/Excel instead.');
 }
 
 /**

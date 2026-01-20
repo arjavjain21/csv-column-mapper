@@ -179,17 +179,19 @@
 >
 	<!-- Drag handle (always visible on hover for mapped columns) -->
 	{#if selectedSourceColumn}
-		<div
+		<button
+			type="button"
 			class="drag-handle"
 			draggable="true"
 			ondragstart={handleDragStart}
 			ondragend={handleDragEnd}
 			title="Drag to reassign this source to another target column"
+			aria-label="Drag to reassign source column"
 		>
 			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 				<path d="M9 17l-5-5 5-5M20 17l-5-5 5-5"/>
 			</svg>
-		</div>
+		</button>
 	{/if}
 
 	<!-- Column Info -->
@@ -313,6 +315,8 @@
 		cursor: grab;
 		color: var(--color-text-tertiary);
 		background-color: transparent;
+		border: none;
+		padding: 0;
 		border-radius: 4px;
 		opacity: 0;
 		transition: all 0.15s ease;
