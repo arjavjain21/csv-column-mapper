@@ -114,6 +114,29 @@ const authGuard: Handle = async ({ event, resolve }) => {
 	const requiresApiAuth = apiProtectedRoutes.some((route) => requestedRoute.startsWith(route));
 
 	if (requiresAuth || requiresApiAuth) {
+		// Check if safeGetSession exists before calling
+		if (!event.locals.safeGetSession || typeof event.locals.safeGetSession !== 'function') {
+			console.error('safeGetSession not available in locals for route:', requestedRoute);
+			if (isApiRoute) {
+				return new Response(
+					JSON.stringify({ error: 'Unauthorized', message: 'Authentication service unavailable' }),
+					{
+						status: 503,
+						headers: {
+							'Content-Type': 'application/json'
+						}
+					}
+				);
+			} else {
+				return new Response('Redirect', {
+					status: 302,
+					headers: {
+						Location: `/auth?redirect=${encodeURIComponent(event.url.pathname)}`
+					}
+				});
+			}
+		}
+
 		const { session } = await event.locals.safeGetSession();
 
 		if (!session) {

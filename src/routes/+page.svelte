@@ -25,7 +25,7 @@
 					<span>CSV Mapper</span>
 				</div>
 				<div class="nav-links">
-					<a href="#features" class="nav-link">Features</a>
+					<a href="/features" class="nav-link">Features</a>
 					<a href="#how-it-works" class="nav-link">How It Works</a>
 					<a href="#pricing" class="nav-link">Pricing</a>
 					<a href="/app" class="btn-primary">Launch App</a>
@@ -282,7 +282,7 @@
 						<div class="popular-badge">Most Popular</div>
 						<div class="pricing-header">
 							<h3>Pro</h3>
-							<div class="price">$12<span>/month</span></div>
+							<div class="price">$29<span>/month</span></div>
 						</div>
 						<div class="pricing-features">
 							<div class="feature-item">✓ Everything in Free</div>
@@ -297,7 +297,7 @@
 					<div class="pricing-card business">
 						<div class="pricing-header">
 							<h3>Business</h3>
-							<div class="price">$39<span>/month</span></div>
+							<div class="price">$99<span>/month</span></div>
 						</div>
 						<div class="pricing-features">
 							<div class="feature-item">✓ Everything in Pro</div>

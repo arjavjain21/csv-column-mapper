@@ -11,21 +11,31 @@
 	let isAuthenticated = $state(false);
 	let checkingAuth = $state(true);
 
-	onMount(() => {
-		// Check authentication status
-		const unsubscribe = authStore.subscribe((state) => {
-			if (!state.loading) {
-				if (!state.user) {
-					// Redirect to auth page if not authenticated
-					goto('/auth?redirect=/app');
-				} else {
-					isAuthenticated = true;
+	onMount(async () => {
+		try {
+			// Initialize auth store first
+			await authStore.initialize();
+			
+			// Check authentication status
+			const unsubscribe = authStore.subscribe((state) => {
+				if (!state.loading) {
+					if (!state.user) {
+						// Redirect to auth page if not authenticated
+						goto('/auth?redirect=/app');
+					} else {
+						isAuthenticated = true;
+					}
+					checkingAuth = false;
 				}
-				checkingAuth = false;
-			}
-		});
+			});
 
-		return unsubscribe;
+			return unsubscribe;
+		} catch (error) {
+			console.error('Auth check error:', error);
+			checkingAuth = false;
+			// Redirect to auth on error
+			goto('/auth?redirect=/app');
+		}
 	});
 
 	function goToMapping() {

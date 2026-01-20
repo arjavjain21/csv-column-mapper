@@ -12,6 +12,11 @@
 	function isAuthRoute() {
 		return $page.url.pathname.startsWith('/auth');
 	}
+
+	function isSecondaryPage() {
+		const secondaryPages = ['/about', '/privacy', '/terms', '/pricing'];
+		return secondaryPages.includes($page.url.pathname);
+	}
 </script>
 
 <svelte:head>
@@ -35,6 +40,9 @@
 			</a>
 
 			<div class="navbar-actions">
+				{#if isSecondaryPage()}
+					<a href="/" class="nav-link-back">Back to Home</a>
+				{/if}
 				<UserMenu />
 				<ThemeToggle />
 			</div>
@@ -89,6 +97,21 @@
 		display: flex;
 		align-items: center;
 		gap: 1rem;
+	}
+
+	.nav-link-back {
+		color: var(--color-text-secondary);
+		text-decoration: none;
+		font-size: 0.875rem;
+		font-weight: 500;
+		transition: color 150ms;
+		padding: 0.5rem 1rem;
+		border-radius: 0.375rem;
+	}
+
+	.nav-link-back:hover {
+		color: var(--color-text-primary);
+		background-color: var(--color-bg-tertiary);
 	}
 
 	/* Responsive */

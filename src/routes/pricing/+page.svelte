@@ -307,9 +307,9 @@
 						onclick={() => subscribe(plan.id)}
 						disabled={isPlanDisabled(plan.id)}
 						class="w-full py-3 px-6 rounded-lg font-semibold transition {isPlanDisabled(plan.id)
-							? 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
+							? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed opacity-60 border border-gray-200 dark:border-gray-700'
 							: isCurrentPlan
-								? 'bg-blue-600 dark:bg-blue-500 text-white'
+								? 'bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600'
 								: 'bg-gray-900 dark:bg-gray-600 hover:bg-gray-800 dark:hover:bg-gray-500 text-white'}"
 					>
 						{getButtonLabel(plan.id)}
@@ -329,7 +329,7 @@
 					<h3 class="font-semibold text-gray-900 dark:text-white mb-2">
 						How do the monthly quotas work?
 					</h3>
-					<p class="text-gray-600 dark:text-gray-400">
+					<p class="text-gray-700 dark:text-gray-200">
 						Your quotas reset monthly based on your subscription start date (not calendar month).
 						For example, if you subscribed on the 15th, your quotas will reset on the 15th of each
 						month.
@@ -338,7 +338,7 @@
 
 				<div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
 					<h3 class="font-semibold text-gray-900 dark:text-white mb-2">What happens if I exceed my quota?</h3>
-					<p class="text-gray-600 dark:text-gray-400">
+					<p class="text-gray-700 dark:text-gray-200">
 						You'll see a friendly upgrade prompt when you hit a limit. You can upgrade to a higher
 						tier to continue processing, or wait until your quota resets on your billing anniversary.
 					</p>
@@ -346,7 +346,7 @@
 
 				<div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
 					<h3 class="font-semibold text-gray-900 dark:text-white mb-2">Can I change plans anytime?</h3>
-					<p class="text-gray-600 dark:text-gray-400">
+					<p class="text-gray-700 dark:text-gray-200">
 						Yes! You can upgrade or downgrade from your profile page. Upgrades take effect
 						immediately. Downgrades take effect at the end of your billing period.
 					</p>
@@ -356,16 +356,16 @@
 					<h3 class="font-semibold text-gray-900 dark:text-white mb-2">
 						What's the difference between rows analyzed and processed?
 					</h3>
-					<p class="text-gray-600 dark:text-gray-400">
-						<strong>Rows analyzed</strong> counts when you upload and preview a file.
-						<strong>Rows processed</strong> counts when you export the transformed data. Both quotas
+					<p class="text-gray-700 dark:text-gray-200">
+						<strong class="text-gray-900 dark:text-white">Rows analyzed</strong> counts when you upload and preview a file.
+						<strong class="text-gray-900 dark:text-white">Rows processed</strong> counts when you export the transformed data. Both quotas
 						reset monthly.
 					</p>
 				</div>
 
 				<div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
 					<h3 class="font-semibold text-gray-900 dark:text-white mb-2">Do you offer refunds?</h3>
-					<p class="text-gray-600 dark:text-gray-400">
+					<p class="text-gray-700 dark:text-gray-200">
 						Yes! If you're not satisfied, contact us within 14 days for a full refund, no
 						questions asked.
 					</p>
