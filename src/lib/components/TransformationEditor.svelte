@@ -44,6 +44,22 @@
 		localTransformation = transformation ?? getDefaultTransformation('none');
 		isOpen = false;
 	}
+
+	function formatTypeName(type: TransformationType): string {
+		const names: Record<TransformationType, string> = {
+			none: 'None',
+			split: 'Split',
+			concatenate: 'Concatenate',
+			uppercase: 'Uppercase',
+			lowercase: 'Lowercase',
+			trim: 'Trim',
+			regex_replace: 'Regex Replace',
+			date_format: 'Date Format',
+			number_format: 'Number Format',
+			custom_formula: 'Custom Formula'
+		};
+		return names[type] || type;
+	}
 </script>
 
 <div class="transformation-editor">
@@ -219,24 +235,6 @@
 		</div>
 	{/if}
 </div>
-
-<script>
-	function formatTypeName(type: TransformationType): string {
-		const names: Record<TransformationType, string> = {
-			none: 'None',
-			split: 'Split',
-			concatenate: 'Concatenate',
-			uppercase: 'Uppercase',
-			lowercase: 'Lowercase',
-			trim: 'Trim',
-			regex_replace: 'Regex Replace',
-			date_format: 'Date Format',
-			number_format: 'Number Format',
-			custom_formula: 'Custom Formula'
-		};
-		return names[type] || type;
-	}
-</script>
 
 <style>
 	.transformation-editor {

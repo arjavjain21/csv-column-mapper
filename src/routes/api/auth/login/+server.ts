@@ -2,7 +2,6 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { supabase } from '$lib/utils/supabaseClient';
 import { checkRateLimit, getRateLimitIdentifier, RATE_LIMITS } from '$lib/utils/rateLimiter';
-import { checkRateLimit, getRateLimitIdentifier, RATE_LIMITS } from '$lib/utils/rateLimiter';
 
 export const POST: RequestHandler = async ({ request }) => {
 	try {
