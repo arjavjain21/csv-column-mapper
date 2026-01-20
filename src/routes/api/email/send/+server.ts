@@ -5,7 +5,7 @@ import { RESEND_API_KEY } from '$env/static/private';
 import { env } from '$env/dynamic/private';
 
 const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
-const EMAIL_FROM = env.EMAIL_FROM || 'noreply@csvmap.com';
+const EMAIL_FROM = env.EMAIL_FROM || 'noreply@mapcsv.com';
 
 export const POST: RequestHandler = async ({ request }) => {
 	if (!resend) {
