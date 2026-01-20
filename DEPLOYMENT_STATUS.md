@@ -1,4 +1,4 @@
-# Deployment Status - csvmap.com
+# Deployment Status - mapcsv.com
 
 ## ✅ Completed Steps
 
@@ -10,7 +10,7 @@
 
 ### 2. Environment Configuration
 - ✅ Production environment file created (.env.production)
-- ✅ PUBLIC_APP_URL set to https://csvmap.com
+- ✅ PUBLIC_APP_URL set to https://mapcsv.com
 - ✅ Supabase credentials configured
 
 ### 3. Process Management
@@ -45,21 +45,21 @@
 ### 2. DNS Configuration
 **Action Required:** Point domain to VPS
 
-1. In your domain registrar (where csvmap.com is registered):
-   - Add A record: `csvmap.com` → `YOUR_VPS_IP`
-   - Add A record: `www.csvmap.com` → `YOUR_VPS_IP`
+1. In your domain registrar (where mapcsv.com is registered):
+   - Add A record: `mapcsv.com` → `YOUR_VPS_IP`
+   - Add A record: `www.mapcsv.com` → `YOUR_VPS_IP`
 2. Wait for DNS propagation (can take up to 48 hours, usually < 1 hour)
 3. Verify DNS:
    ```bash
-   dig csvmap.com
-   nslookup csvmap.com
+   dig mapcsv.com
+   nslookup mapcsv.com
    ```
 
 ### 3. SSL Certificate
 **Action Required:** After DNS propagates
 
 ```bash
-sudo certbot --nginx -d csvmap.com -d www.csvmap.com
+sudo certbot --nginx -d mapcsv.com -d www.mapcsv.com
 ```
 
 Certbot will:
@@ -72,11 +72,11 @@ After SSL is configured:
 
 ```bash
 # Test application
-curl https://csvmap.com
-curl https://csvmap.com/api/auth/session
+curl https://mapcsv.com
+curl https://mapcsv.com/api/auth/session
 
 # Check SSL
-curl -I https://csvmap.com
+curl -I https://mapcsv.com
 ```
 
 ## Current Status
@@ -99,7 +99,7 @@ Your VPS IP: Check with `hostname -I` or your hosting provider
    - Run SQL from `migration-output.sql`
 
 2. **Configure DNS** (5 minutes + propagation time)
-   - Point csvmap.com to your VPS IP
+   - Point mapcsv.com to your VPS IP
    - Wait for propagation
 
 3. **Setup SSL** (5 minutes)
@@ -107,7 +107,7 @@ Your VPS IP: Check with `hostname -I` or your hosting provider
    - Verify HTTPS works
 
 4. **Test Everything** (10 minutes)
-   - Visit https://csvmap.com
+   - Visit https://mapcsv.com
    - Test authentication
    - Test file upload
    - Test column mapping

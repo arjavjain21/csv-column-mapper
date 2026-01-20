@@ -36,7 +36,7 @@
 
 ---
 
-## Cost Estimate for csvmap.com
+## Cost Estimate for mapcsv.com
 
 ### Scenario 1: Starting Out (Free Tier)
 **Monthly Cost: $0**
@@ -70,7 +70,7 @@
 | **Supabase** | $0 | $25 | Database & Auth (Free tier: 500MB DB, 2GB bandwidth) |
 | **Stripe** | $0 | 2.9% + $0.30 | Payment processing (per transaction) |
 | **Resend** | $0 | $20 | Email (Free: 3,000 emails/month, Pro: 50,000) |
-| **Domain** | $12/year | $12/year | csvmap.com (~$1/month) |
+| **Domain** | $12/year | $12/year | mapcsv.com (~$1/month) |
 | **Total** | **~$1/month** | **~$66/month** | Before Stripe fees |
 
 ### With 100 Paying Users ($29/month Pro plan)
@@ -188,7 +188,7 @@
 
 4. **Email Setup** (15 minutes)
    - [ ] Create Resend account
-   - [ ] Verify domain (csvmap.com)
+   - [ ] Verify domain (mapcsv.com)
    - [ ] Add DNS records (SPF, DKIM)
    - [ ] Test email sending
 

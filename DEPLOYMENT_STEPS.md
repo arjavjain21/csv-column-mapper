@@ -1,7 +1,7 @@
-# Deployment Steps for csvmap.com
+# Deployment Steps for mapcsv.com
 
 ## Prerequisites
-- Domain: csvmap.com (pointed to VPS IP)
+- Domain: mapcsv.com (pointed to VPS IP)
 - VPS: Ubuntu 22.04+ with root/sudo access
 - Supabase project configured
 - GitHub repository: https://github.com/arjavjain21/csv-column-mapper
@@ -68,7 +68,7 @@ Set these values:
 ```env
 PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-PUBLIC_APP_URL=https://csvmap.com
+PUBLIC_APP_URL=https://mapcsv.com
 NODE_ENV=production
 PORT=3000
 ```
@@ -131,14 +131,14 @@ pm2 startup
 
 ```bash
 # Create Nginx configuration
-sudo nano /etc/nginx/sites-available/csvmap.com
+sudo nano /etc/nginx/sites-available/mapcsv.com
 ```
 
 Add this configuration:
 ```nginx
 server {
     listen 80;
-    server_name csvmap.com www.csvmap.com;
+    server_name mapcsv.com www.mapcsv.com;
 
     # Redirect to HTTPS (will be enabled after SSL)
     # return 301 https://$server_name$request_uri;
@@ -159,34 +159,34 @@ server {
 
 Enable site:
 ```bash
-sudo ln -s /etc/nginx/sites-available/csvmap.com /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/mapcsv.com /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl restart nginx
 ```
 
 ## Step 7: Configure DNS
 
-In your domain registrar (where you bought csvmap.com):
-1. Add A record: `csvmap.com` → Your VPS IP
-2. Add A record: `www.csvmap.com` → Your VPS IP
+In your domain registrar (where you bought mapcsv.com):
+1. Add A record: `mapcsv.com` → Your VPS IP
+2. Add A record: `www.mapcsv.com` → Your VPS IP
 
 Wait for DNS propagation (can take up to 48 hours, usually < 1 hour).
 
 Verify:
 ```bash
-dig csvmap.com
-nslookup csvmap.com
+dig mapcsv.com
+nslookup mapcsv.com
 ```
 
 ## Step 8: Setup SSL Certificate
 
 ```bash
 # Obtain SSL certificate
-sudo certbot --nginx -d csvmap.com -d www.csvmap.com
+sudo certbot --nginx -d mapcsv.com -d www.mapcsv.com
 
 # Certbot will automatically update Nginx config
 # Verify SSL
-curl -I https://csvmap.com
+curl -I https://mapcsv.com
 ```
 
 ## Step 9: Verify Deployment
@@ -200,13 +200,13 @@ pm2 logs csvmap
 sudo systemctl status nginx
 
 # Test endpoints
-curl https://csvmap.com
-curl https://csvmap.com/api/auth/session
+curl https://mapcsv.com
+curl https://mapcsv.com/api/auth/session
 ```
 
 ## Step 10: Post-Deployment Checklist
 
-- [ ] Application accessible at https://csvmap.com
+- [ ] Application accessible at https://mapcsv.com
 - [ ] SSL certificate valid (green lock in browser)
 - [ ] Authentication working (magic link login)
 - [ ] File upload working

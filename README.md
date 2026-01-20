@@ -84,7 +84,7 @@ See `.env.example` for all required variables.
 **Required:**
 - `PUBLIC_SUPABASE_URL` - Supabase project URL
 - `PUBLIC_SUPABASE_ANON_KEY` - Supabase anon key
-- `PUBLIC_APP_URL` - Your app URL (e.g., https://csvmap.com)
+- `PUBLIC_APP_URL` - Your app URL (e.g., https://mapcsv.com)
 
 **Optional:**
 - Stripe keys (for payments)
@@ -134,4 +134,4 @@ For issues and questions, please open an issue on GitHub.
 
 ---
 
-**Deployed at:** https://csvmap.com
+**Deployed at:** https://mapcsv.com

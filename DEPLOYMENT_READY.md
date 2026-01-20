@@ -54,7 +54,7 @@ Create `.env.production` file:
 ```env
 PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-PUBLIC_APP_URL=https://csvmap.com
+PUBLIC_APP_URL=https://mapcsv.com
 NODE_ENV=production
 PORT=3000
 ```
@@ -93,11 +93,11 @@ Follow `DEPLOYMENT_STEPS.md` for complete instructions. Quick summary:
 
 5. **Setup SSL**
    ```bash
-   sudo certbot --nginx -d csvmap.com -d www.csvmap.com
+   sudo certbot --nginx -d mapcsv.com -d www.mapcsv.com
    ```
 
 ### Step 4: Verify Deployment
-- [ ] Application accessible at https://csvmap.com
+- [ ] Application accessible at https://mapcsv.com
 - [ ] SSL certificate valid
 - [ ] Authentication working
 - [ ] File upload functional
@@ -148,7 +148,7 @@ npm run test:coverage # With coverage
 **Required:**
 - `PUBLIC_SUPABASE_URL` - Supabase project URL
 - `PUBLIC_SUPABASE_ANON_KEY` - Supabase anon key
-- `PUBLIC_APP_URL` - Your app URL (https://csvmap.com)
+- `PUBLIC_APP_URL` - Your app URL (https://mapcsv.com)
 
 **Optional:**
 - `RESEND_API_KEY` - For email notifications

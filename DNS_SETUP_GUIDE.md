@@ -1,4 +1,4 @@
-# DNS Setup Guide for csvmap.com
+# DNS Setup Guide for mapcsv.com
 
 ## DNS Record Types Required
 
@@ -14,11 +14,11 @@ You need **A Records** (Address Records) to point your domain to the VPS IP addr
 
 ### Step 1: Log into Your Domain Registrar
 
-1. Go to your domain registrar website (where you purchased csvmap.com)
+1. Go to your domain registrar website (where you purchased mapcsv.com)
    - Common registrars: Namecheap, GoDaddy, Cloudflare, Google Domains, etc.
 2. Log in to your account
 3. Navigate to **Domain Management** or **My Domains**
-4. Find and click on **csvmap.com**
+4. Find and click on **mapcsv.com**
 
 ### Step 2: Access DNS Management
 
@@ -30,7 +30,7 @@ You need **A Records** (Address Records) to point your domain to the VPS IP addr
 
 You need to add **TWO** A records:
 
-#### Record 1: Root Domain (csvmap.com)
+#### Record 1: Root Domain (mapcsv.com)
 
 1. Click **Add Record** or **+ Add** button
 2. Select record type: **A Record** or **A**
@@ -41,7 +41,7 @@ You need to add **TWO** A records:
    - **TTL**: `3600` (1 hour) or `Automatic`
 4. Click **Save** or **Add Record**
 
-#### Record 2: WWW Subdomain (www.csvmap.com)
+#### Record 2: WWW Subdomain (www.mapcsv.com)
 
 1. Click **Add Record** or **+ Add** button again
 2. Select record type: **A Record** or **A**
@@ -66,8 +66,8 @@ Or:
 
 ```
 Type    Name              Value           TTL
-A       csvmap.com        137.74.43.93    3600
-A       www.csvmap.com    137.74.43.93    3600
+A       mapcsv.com        137.74.43.93    3600
+A       www.mapcsv.com    137.74.43.93    3600
 ```
 
 ### Step 5: Wait for DNS Propagation
@@ -78,13 +78,13 @@ DNS changes can take anywhere from **5 minutes to 48 hours** to propagate global
 
 ```bash
 # On your VPS or local machine
-dig csvmap.com
-nslookup csvmap.com
-host csvmap.com
+dig mapcsv.com
+nslookup mapcsv.com
+host mapcsv.com
 
 # Or use online tools:
-# https://www.whatsmydns.net/#A/csvmap.com
-# https://dnschecker.org/#A/csvmap.com
+# https://www.whatsmydns.net/#A/mapcsv.com
+# https://dnschecker.org/#A/mapcsv.com
 ```
 
 **What to look for:**
@@ -97,10 +97,10 @@ Once DNS propagates, test:
 
 ```bash
 # Test root domain
-curl -I http://csvmap.com
+curl -I http://mapcsv.com
 
 # Test www subdomain
-curl -I http://www.csvmap.com
+curl -I http://www.mapcsv.com
 
 # Both should connect to your VPS
 ```
@@ -110,7 +110,7 @@ curl -I http://www.csvmap.com
 ## Common Registrar-Specific Instructions
 
 ### Namecheap
-1. Go to **Domain List** → Click **Manage** next to csvmap.com
+1. Go to **Domain List** → Click **Manage** next to mapcsv.com
 2. Go to **Advanced DNS** tab
 3. Under **Host Records**, click **Add New Record**
 4. Add two A records:
@@ -118,7 +118,7 @@ curl -I http://www.csvmap.com
    - Host: `www`, Type: `A Record`, Value: `137.74.43.93`, TTL: `Automatic`
 
 ### GoDaddy
-1. Go to **My Products** → **Domains** → Click **csvmap.com**
+1. Go to **My Products** → **Domains** → Click **mapcsv.com**
 2. Click **DNS** tab
 3. Scroll to **Records** section
 4. Click **Add** button
@@ -127,7 +127,7 @@ curl -I http://www.csvmap.com
    - Type: `A`, Name: `www`, Value: `137.74.43.93`, TTL: `600`
 
 ### Cloudflare
-1. Select **csvmap.com** domain
+1. Select **mapcsv.com** domain
 2. Go to **DNS** → **Records**
 3. Click **Add record**
 4. Add two A records:
@@ -135,7 +135,7 @@ curl -I http://www.csvmap.com
    - Type: `A`, Name: `www`, IPv4 address: `137.74.43.93`, Proxy: `DNS only` (gray cloud), TTL: `Auto`
 
 ### Google Domains
-1. Go to **My domains** → Click **csvmap.com**
+1. Go to **My domains** → Click **mapcsv.com**
 2. Click **DNS** tab
 3. Under **Custom resource records**, click **Manage custom records**
 4. Add two A records:
@@ -173,10 +173,10 @@ curl -I http://www.csvmap.com
 
 ## After DNS is Configured
 
-Once DNS propagates (you can verify with `dig csvmap.com`), proceed with SSL setup:
+Once DNS propagates (you can verify with `dig mapcsv.com`), proceed with SSL setup:
 
 ```bash
-sudo certbot --nginx -d csvmap.com -d www.csvmap.com
+sudo certbot --nginx -d mapcsv.com -d www.mapcsv.com
 ```
 
 This will:
@@ -185,5 +185,5 @@ This will:
 3. Set up auto-renewal
 
 Then your site will be accessible at:
-- https://csvmap.com
-- https://www.csvmap.com
+- https://mapcsv.com
+- https://www.mapcsv.com

@@ -153,7 +153,7 @@ User → Magic Link → Supabase Auth → Session Created → Profile Auto-Creat
 | Supabase | $0 | 500MB DB, 2GB bandwidth |
 | Resend | $0 | 3,000 emails/month |
 | Stripe | 2.9% + $0.30 | Per transaction only |
-| Domain | $12/year | csvmap.com |
+| Domain | $12/year | mapcsv.com |
 | **Total** | **~$1/month** | Perfect for MVP |
 
 ### Pro Tier (Growth Stage)
