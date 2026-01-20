@@ -1,9 +1,11 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { Resend } from 'resend';
-import { RESEND_API_KEY, EMAIL_FROM } from '$env/static/private';
+import { RESEND_API_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
 const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
+const EMAIL_FROM = env.EMAIL_FROM || 'noreply@csvmap.com';
 
 export const POST: RequestHandler = async ({ request }) => {
 	if (!resend) {
